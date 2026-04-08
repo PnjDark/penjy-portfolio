@@ -1,0 +1,52 @@
+/* Motion Constants - Timing and easing for confident interactions */
+
+/* ===== DURATIONS ===== */
+
+/* Fast interactions (buttons, toggles) */
+--motion-duration-fast: 120ms;
+--motion-duration-normal: 180ms;
+
+/* Medium transitions (card hovers, section reveals) */
+--motion-duration-medium: 240ms;
+--motion-duration-slow: 300ms;
+
+/* ===== EASING CURVES ===== */
+
+/* Confident ease - clear intent, no wobble */
+--motion-ease-confident: cubic-bezier(0.22, 1, 0.36, 1);
+
+/* Subtle ease - for micro-interactions */
+--motion-ease-subtle: cubic-bezier(0.4, 0, 0.2, 1);
+
+/* Exit ease - faster out */
+--motion-ease-exit: cubic-bezier(0.4, 0, 1, 1);
+
+/* ===== TRANSFORM VALUES ===== */
+
+/* Hover lifts - subtle elevation */
+--transform-lift-sm: translateY(-1px);
+--transform-lift-md: translateY(-2px);
+
+/* Press feedback */
+--transform-press: scale(0.98);
+
+/* ===== ANIMATION CONSTRAINTS ===== */
+
+/* Maximum scale for any interaction */
+--scale-max: 1.05;
+
+/* Maximum rotation for any interaction */
+--rotate-max: 5deg;
+
+/* ===== REDUCED MOTION OVERRIDES ===== */
+
+@media (prefers-reduced-motion: reduce) {
+  --motion-duration-fast: 0.01ms;
+  --motion-duration-normal: 0.01ms;
+  --motion-duration-medium: 0.01ms;
+  --motion-duration-slow: 0.01ms;
+  
+  --transform-lift-sm: none;
+  --transform-lift-md: none;
+  --transform-press: none;
+}

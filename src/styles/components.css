@@ -1,0 +1,119 @@
+/* Component Styles - Reusable patterns using design tokens */
+
+/* ===== CARD COMPONENT ===== */
+
+.card {
+  padding: var(--space-lg);
+  background: var(--color-bg-elevated);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  transition-property: transform, box-shadow, border-color;
+  transition-duration: var(--motion-duration-medium);
+  transition-timing-function: var(--motion-ease-subtle);
+  will-change: transform, box-shadow;
+}
+
+.card:hover {
+  transform: var(--transform-lift-md);
+  box-shadow: var(--shadow-elevated);
+  border-color: var(--color-border-hover);
+}
+
+/* Press should feel grounded, not floating */
+.card:active {
+  transform: scale(0.98);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* ===== BUTTON SYSTEM ===== */
+
+/* Base button */
+.btn {
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: var(--radius-md); /* radius-md for actions, not pills */
+  border: 2px solid transparent;
+  font-weight: var(--font-weight-semibold);
+  font-size: 1rem;
+  cursor: pointer;
+  transition-property: background-color, color, transform, border-color;
+  transition-duration: var(--motion-duration-fast);
+  transition-timing-function: var(--motion-ease-confident);
+  will-change: transform, background-color;
+}
+
+.btn:active {
+  transform: var(--transform-press);
+}
+
+/* ===== SKILL BUTTON VARIANT ===== */
+
+.btn-skill {
+  background: transparent;
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  border-radius: var(--radius-full); /* Pills for filters/tags only */
+}
+
+.btn-skill:hover {
+  background: color-mix(in srgb, var(--color-primary) 8%, transparent);
+}
+
+.btn-skill.active {
+  background: var(--color-primary);
+  color: var(--color-bg);
+  border-color: var(--color-primary);
+}
+
+.btn-skill.active:hover {
+  background: var(--color-primary-hover);
+  border-color: var(--color-primary-hover);
+}
+/* ===== SECTION COMPONENT ===== */
+
+.section {
+  padding: var(--space-xl);
+  background: var(--color-bg-muted);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--color-border);
+}
+
+/* ===== UTILITY CLASSES ===== */
+
+.text-gradient {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.elevated {
+  box-shadow: var(--shadow-elevated);
+}
+
+.muted-bg {
+  background: var(--color-bg-muted);
+}
+
+.elevated-bg {
+  background: var(--color-bg-elevated);
+}
+
+/* ===== LAYOUT UTILITIES ===== */
+
+.container {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.grid-responsive {
+  display: grid;
+  gap: var(--space-lg);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}

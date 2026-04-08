@@ -1,0 +1,150 @@
+/* Design Tokens - Semantic vocabulary for the entire system */
+/* This file must define ALL CSS variables before they're used */
+
+:root {
+  /* ===== COLOR PALETTE ===== */
+  
+  /* Primary brand colors */
+  --color-primary: #7c3aed;
+  --color-primary-hover: #6d28d9;
+  --color-primary-active: #5b21b6;
+  
+  /* Secondary brand colors */
+  --color-secondary: #3b82f6;
+  --color-secondary-hover: #2563eb;
+  --color-secondary-active: #1d4ed8;
+  
+  /* Neutral palette */
+  --color-bg: #ffffff;
+  --color-bg-muted: #f8fafc;
+  --color-bg-elevated: #ffffff; /* Elevated surfaces rely on shadow, not color */
+  
+  --color-fg: #000000;
+  --color-fg-muted: #475569;
+  --color-fg-subtle: #64748b;
+  
+  /* Border colors */
+  --color-border: #e2e8f0;
+  --color-border-hover: #cbd5e1;
+  
+  --color-accent: #10b981;
+  --color-accent-hover: #0da271;
+  
+  /* ===== SEMANTIC COLORS (Reserved for future system states) ===== */
+  /* 
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+  */
+  
+  /* ===== SPACING SYSTEM ===== */
+  
+  /* Base unit: 4px */
+  --space-unit: 4px;
+  
+  /* Space scale (4px increments) */
+  --space-xs: calc(var(--space-unit) * 1);  /* 4px */
+  --space-sm: calc(var(--space-unit) * 2);  /* 8px */
+  --space-md: calc(var(--space-unit) * 4);  /* 16px */
+  --space-lg: calc(var(--space-unit) * 8);  /* 32px */
+  --space-xl: calc(var(--space-unit) * 12); /* 48px */
+  --space-2xl: calc(var(--space-unit) * 16); /* 64px */
+  
+  /* ===== RADIUS SYSTEM ===== */
+  
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 18px;
+  --radius-full: 9999px;
+  
+  /* ===== SHADOW SYSTEM ===== */
+  
+  /* One shadow style only */
+  --shadow-elevated: 0 12px 30px rgba(0, 0, 0, 0.08);
+  
+  /* ===== TYPOGRAPHY ===== */
+  
+  /* Font families */
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  --font-mono: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
+  
+  /* Font weights */
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  
+  /* ===== Z-INDEX LAYERS ===== */
+  
+  --z-base: 0;
+  --z-elevated: 10;
+  --z-sticky: 100;
+  --z-modal: 1000;
+  --z-toast: 1100;
+  
+  /* ===== OPACITY ===== */
+  
+  --opacity-disabled: 0.5;
+  --opacity-hover: 0.08;
+  --opacity-active: 0.12;
+  
+  /* ===== LAYOUT CONSTANTS ===== */
+  
+  --container-max-width: 1200px;
+  --header-height: 64px;
+  --section-spacing: var(--space-2xl);
+  
+  /* ===== MOTION CONSTANTS (in tokens for CSS use) ===== */
+  
+  /* Fast interactions (buttons, toggles) */
+  --motion-duration-fast: 120ms;
+  --motion-duration-normal: 180ms;
+  
+  /* Medium transitions (card hovers, section reveals) */
+  --motion-duration-medium: 240ms;
+  --motion-duration-slow: 300ms;
+  
+  /* Easing Curves */
+  --motion-ease-confident: cubic-bezier(0.22, 1, 0.36, 1);
+  --motion-ease-subtle: cubic-bezier(0.4, 0, 0.2, 1);
+  --motion-ease-exit: cubic-bezier(0.4, 0, 1, 1);
+  
+  /* Transform Values */
+  --transform-lift-sm: translateY(-1px);
+  --transform-lift-md: translateY(-2px);
+  --transform-press: scale(0.98);
+  
+  /* ===== DARK MODE OVERRIDES ===== */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #0f172a;
+    --color-bg-muted: #1e293b;
+    --color-bg-elevated: #1e293b;
+    
+    --color-fg: #f8fafc;
+    --color-fg-muted: #cbd5e1;
+    --color-fg-subtle: #94a3b8;
+    
+    --color-border: #334155;
+    --color-border-hover: #475569;
+    
+    --shadow-elevated: 0 12px 30px rgba(0, 0, 0, 0.2);
+  }
+}
+
+/* Reduce motion preference override */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion-duration-fast: 0.01ms;
+    --motion-duration-normal: 0.01ms;
+    --motion-duration-medium: 0.01ms;
+    --motion-duration-slow: 0.01ms;
+    
+    --transform-lift-sm: none;
+    --transform-lift-md: none;
+    --transform-press: none;
+  }
+}
