@@ -7,58 +7,51 @@ export default function Header() {
   const [hoveredLink, setHoveredLink] = useState<string | null>(null);
 
   const navLinks = [
-    { id: "about", label: "About" },
     { id: "projects", label: "Projects" },
     { id: "skills", label: "Skills" },
+    { id: "experience", label: "Experience" },
     { id: "contact", label: "Contact" },
   ];
 
   return (
-    <header style={{
-      width: "100%",
-      padding: "1.5rem 2rem",
-      background: "var(--color-bg)",
-      borderBottom: "1px solid var(--color-border)",
-      display: "flex",
-      justifyContent: "space-between",
-      alignItems: "center",
-      position: "sticky",
-      top: 0,
-      zIndex: 100,
-      backdropFilter: "blur(10px)",
-      WebkitBackdropFilter: "blur(10px)"
-    }}>
-      <h1 style={{ 
-        fontSize: "1.5rem", 
-        fontWeight: "bold",
-        color: "var(--color-primary)",
-        margin: 0
-      }}>
-        Penjy
-      </h1>
-      <nav style={{ display: "flex", gap: "1rem" }}>
-        {navLinks.map((link) => (
-          <Link 
-            key={link.id}
-            href={`#${link.id}`}
-            style={{
-              color: hoveredLink === link.id ? "var(--color-primary)" : "var(--color-fg)",
-              textDecoration: "none",
-              fontSize: "0.9375rem",
-              fontWeight: "var(--font-weight-medium)",
-              padding: "var(--space-sm) var(--space-md)",
-              borderRadius: "var(--radius-md)", /* radius-md for navigation */
-              transition: "all var(--motion-duration-fast) var(--motion-ease-subtle)"
-            }}
-            onMouseEnter={() => setHoveredLink(link.id)}
-            onMouseLeave={() => setHoveredLink(null)}
-            onFocus={() => setHoveredLink(link.id)}
-            onBlur={() => setHoveredLink(null)}
+    <header className="sticky top-0 z-50 w-full border-b border-border bg-background/80 backdrop-blur-md">
+      <div className="mx-auto max-w-5xl px-6 py-4 sm:px-8 md:px-12">
+        <div className="flex items-center justify-between">
+          {/* Logo */}
+          <Link
+            href="/"
+            className="font-heading text-xl font-bold text-primary hover:text-primary/80 transition-colors"
           >
-            {link.label}
+            Penjy
           </Link>
-        ))}
-      </nav>
+
+          {/* Navigation */}
+          <nav className="flex items-center gap-1 sm:gap-2">
+            {navLinks.map((link) => (
+              <Link
+                key={link.id}
+                href={`#${link.id}`}
+                className="relative px-3 py-2 text-sm font-medium text-foreground hover:text-primary transition-colors rounded-md hover:bg-secondary/5"
+                onMouseEnter={() => setHoveredLink(link.id)}
+                onMouseLeave={() => setHoveredLink(null)}
+              >
+                {link.label}
+                {hoveredLink === link.id && (
+                  <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary rounded-full" />
+                )}
+              </Link>
+            ))}
+          </nav>
+
+          {/* CTA Button */}
+          <Link
+            href="#contact"
+            className="ml-4 inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-primary-foreground bg-primary hover:bg-primary/90 rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-primary/20"
+          >
+            Contact
+          </Link>
+        </div>
+      </div>
     </header>
   );
 }
